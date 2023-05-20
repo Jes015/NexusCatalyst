@@ -1,5 +1,5 @@
 // Styles
-import '@/normalize.css'
+import './styles/normalize.css'
 
 // React
 import { createRoot } from 'react-dom/client'
