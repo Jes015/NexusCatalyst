@@ -1,0 +1,31 @@
+.login {
+    display: inline-flex;
+    flex-direction: column;
+    padding: 1em;
+    width: 17em;
+
+    border-radius: 0.3em;
+    background-color: var(--body-secondary-background);
+}
+
+.login__form {
+    display: flex;
+    flex-direction: column;
+    gap: 0.8em;
+    
+}
+
+.login__formGroup {
+    display: flex;
+    flex-direction: column;
+}
+
+.login__footer {
+    display: flex;
+    justify-content: center;
+    margin-top: 0.4em;
+}
+
+.login__title {
+    text-align: center;
+}

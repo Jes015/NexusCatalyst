@@ -1,6 +1,5 @@
 module.exports = {
   env: { browser: true, es2020: true },
-  files: ['*.ts', '*.tsx'],
   extends: [
     'eslint:recommended',
     'plugin:@typescript-eslint/recommended',

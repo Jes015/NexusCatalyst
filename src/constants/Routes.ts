@@ -1,5 +1,6 @@
 export const CRoutes = {
   index: '/',
   dashboard: '/dashboard',
-  login: '/login'
+  login: '/login',
+  register: '/register'
 } as const

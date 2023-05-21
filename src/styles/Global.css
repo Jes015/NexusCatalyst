@@ -7,4 +7,36 @@
     --input-primary-color: #16161a;
     --text-primary-color: #fffffe;
     --text-secondary-color: #94a1b2;
+    --border-primary-color: #010101;
+    --primary-font: 'Roboto'
+
+}
+
+body {
+    background-color: var(--body-primary-background);
+    color: var(--text-primary-color);
+    font-family: var(--primary-font);
+}
+
+a {
+    text-decoration: none;
+    color: var(--ancord-primary-color);
+}
+
+input, button {
+    color: inherit;
+    padding: 0.6em;
+    border: none;
+}
+
+input {
+    outline: none;
+    background-color: var(--input-primary-color);
+}
+
+button {
+    background-color: var(--button-primary-background);   
+    border-radius: 0.2em;
+    font-weight: 600;
+    cursor: pointer;
 }
