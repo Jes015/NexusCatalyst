@@ -1,12 +1,14 @@
 // Custom components
 import { Login } from '../'
+import { CardLayout } from '../../components/CardLayout'
 
 // Styles
 import styles from './Index.module.css'
 
 export const Index = () => {
   return (
-    <div className={styles.index}>
+    <CardLayout>
+      <div className={styles.index}>
       <div className={styles.index__wrap}>
         <section>
           <img src='/loginImage.webp' className={styles.index__image}/>
@@ -14,5 +16,6 @@ export const Index = () => {
         <Login />
       </div>
     </div>
+    </CardLayout>
   )
 }

@@ -27,6 +27,7 @@ input, button {
     color: inherit;
     padding: 0.6em;
     border: none;
+    border-radius: 0.2em;
 }
 
 input {
@@ -36,7 +37,6 @@ input {
 
 button {
     background-color: var(--button-primary-background);   
-    border-radius: 0.2em;
     font-weight: 600;
     cursor: pointer;
 }
