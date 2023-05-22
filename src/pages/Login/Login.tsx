@@ -1,9 +1,11 @@
 import { Link } from 'react-router-dom'
+import { toast } from 'sonner'
 import { CardLayout, Form } from '../../components'
 import { CRoutes } from '../../constants'
 
-export const Login = () => {
+const Login = () => {
   const login = () => {
+    toast('Hablalo pa')
     return 'safsd'
   }
 
@@ -15,3 +17,5 @@ export const Login = () => {
     </CardLayout>
   )
 }
+
+export default Login

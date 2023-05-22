@@ -1,11 +1,11 @@
 // Custom components
-import { Login } from '../'
 import { CardLayout } from '../../components/CardLayout'
+import Login from '../Login/Login'
 
 // Styles
 import styles from './Index.module.css'
 
-export const Index = () => {
+const Index = () => {
   return (
     <CardLayout>
       <div className={styles.index}>
@@ -19,3 +19,5 @@ export const Index = () => {
     </CardLayout>
   )
 }
+
+export default Index

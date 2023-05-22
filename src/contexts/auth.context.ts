@@ -7,9 +7,6 @@ interface IContext {
 
 const authContext = createContext<IContext | null>({ name: '' })
 
-const useAuthContext = () => {
-  const context = useContext(authContext)
-  return context
-}
+const useAuthContext = () => useContext(authContext)
 
 export { authContext, useAuthContext }

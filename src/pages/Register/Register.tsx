@@ -2,7 +2,7 @@ import { Link } from 'react-router-dom'
 import { CardLayout, Form } from '../../components/'
 import { CRoutes } from '../../constants'
 
-export const Register = () => {
+const Register = () => {
   return (
         <CardLayout>
             <Form formTitle='Nexus Catalyst' buttonName='Register' onClickButton={() => { return 'a' }}>
@@ -11,3 +11,5 @@ export const Register = () => {
         </CardLayout>
   )
 }
+
+export default Register
