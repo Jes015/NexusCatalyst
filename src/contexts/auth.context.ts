@@ -1,11 +1,13 @@
 import { createContext, useContext } from 'react'
+import { type IUser } from '../types'
 
 interface IContext {
-  name: string
-
+  user: IUser
+  signIn: (username: string, password: string) => Promise<unknown>
+  createUser: (username: string, password: string) => Promise<unknown>
 }
 
-const authContext = createContext<IContext | null>({ name: '' })
+const authContext = createContext<IContext>({})
 
 const useAuthContext = () => useContext(authContext)
 

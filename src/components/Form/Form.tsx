@@ -4,13 +4,17 @@ import styles from './Form.module.css'
 interface props {
   formTitle: string
   buttonName: string
-  onClickButton: (event: React.MouseEvent<HTMLButtonElement, MouseEvent>) => void
+  onClickButton: (username: string, password: string) => void
   children?: JSX.Element
 }
 
 export const Form = ({ formTitle, buttonName, onClickButton, children }: props) => {
   const handleOnSumbit = (event: React.FormEvent<HTMLFormElement>) => {
     event.preventDefault()
+
+    const form = new FormData(event.target as HTMLFormElement)
+
+    onClickButton(form.get('email') as string, form.get('password') as string)
   }
 
   return (
@@ -28,7 +32,7 @@ export const Form = ({ formTitle, buttonName, onClickButton, children }: props) 
             <label htmlFor='password'>Password</label>
             <input name='password' id='password' />
           </div>
-          <button onClick={onClickButton}>{buttonName}</button>
+          <button>{buttonName}</button>
         </form>
       </main>
       <footer className={styles.form__footer}>

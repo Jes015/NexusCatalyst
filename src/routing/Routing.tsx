@@ -12,15 +12,17 @@ const PrivateRoutes = lazy(async () => await import('./PrivateRoutes'))
 export const Routing = () => {
   return (
     <BrowserRouter>
-      <Routes>
-          <Route path={CRoutes.index} element={<Suspense children={<Index />} />} />
-          <Route path={CRoutes.login} element={<Suspense children={<Login />} />} />
-          <Route path={CRoutes.register} element={<Suspense children={<Register />} />} />
-          <Route element={<Suspense children={<PrivateRoutes isAuth={false} />} />}>
+      <Suspense>
+        <Routes>
+          <Route path={CRoutes.index} element={<Index />}/>
+          <Route path={CRoutes.login} element={<Login />}/>
+          <Route path={CRoutes.register} element={<Register />}/>
+          <Route element={<PrivateRoutes isAuth={false} />}>
             <Route path={CRoutes.dashboard} element={<h1>Holaaaaa</h1>} />
           </Route>
           <Route path='*' element={<h1>Not found</h1>} />
-      </Routes>
+        </Routes>
+      </Suspense>
     </BrowserRouter>
   )
 }
