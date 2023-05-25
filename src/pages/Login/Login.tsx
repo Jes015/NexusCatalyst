@@ -1,18 +1,29 @@
-import { Link } from 'react-router-dom'
+// React router dom
+import { Link, useNavigate } from 'react-router-dom'
+
+// Custom components
 import { toast } from 'sonner'
-import { CardLayout, Form } from '../../components'
+import { Form } from '../../components'
+import { CardLayout } from '../../layouts'
+
+// Constants
 import { CRoutes } from '../../constants'
+
+// Context
 import { useAuthContext } from '../../contexts'
 
 const Login = () => {
-  const { signIn } = useAuthContext()
+  const { logInUser } = useAuthContext()
+
+  const navigate = useNavigate()
   const handleOnClickLogin = (user: string, password: string) => {
-    signIn(user, password)
-      .then((res) => {
-        toast(<p>{ JSON.stringify(res) }</p>)
+    logInUser(user, password)
+      .then(res => {
+        toast.success(res as string)
+        navigate(CRoutes.dashboard)
       })
-      .catch((err) => {
-        toast(err.code, { style: { background: '#f05a5a' } })
+      .catch(err => {
+        toast.error(err.code, { style: { background: '#f05a5a' } })
       })
   }
 

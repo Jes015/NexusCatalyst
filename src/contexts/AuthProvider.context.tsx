@@ -1,11 +1,11 @@
 // Custom hooks
-import { useUserAuth } from '../hooks/useUserAuth'
+import { useUserAuth } from '../hooks/'
 
 // Context
 import { authContext } from './'
 
 export const AuthContextProvider = ({ children }: { children?: JSX.Element }) => {
-  const { createUser, signIn, user } = useUserAuth()
+  const { registerUser, logInUser, logOutUser, user } = useUserAuth()
 
-  return <authContext.Provider value={{ user, createUser, signIn }}> {children} </authContext.Provider>
+  return <authContext.Provider value={{ registerUser, logInUser, logOutUser, user }}> {children} </authContext.Provider>
 }

@@ -1,30 +1,51 @@
+// React
+import { useEffect, useState } from 'react'
+
 // Types
 import type { IUser } from '../types'
 
+// Services
+import { logIn, logOut, register } from '../services/user.service'
+
 // Firebase
-import { createUserWithEmailAndPassword, signInWithEmailAndPassword } from 'firebase/auth'
+import { onAuthStateChanged } from 'firebase/auth'
 import { auth } from '../firebase.config'
 
 export const useUserAuth = () => {
-  const user: IUser = { name: 'user', password: 'false' }
+  const [user, setUser] = useState<IUser>()
 
-  const createUser = async (user: string, password: string) => {
+  useEffect(() => {
+    onAuthStateChanged(auth, currentUser => {
+      setUser(currentUser as IUser)
+    })
+  }, [])
+  const registerUser = async (email: string, password: string) => {
     return await new Promise((resolve, reject) => {
-      createUserWithEmailAndPassword(auth, user, password)
-        .then((res) => { resolve(res) })
-        .catch((err) => { reject(err) })
+      register(auth, email, password)
+        .then(() => {
+          resolve('User registered')
+        })
+        .catch(err => {
+          reject(err)
+        })
     })
   }
 
-  const signIn = async (user: string, password: string) => {
+  const logInUser = async (email: string, password: string) => {
     return await new Promise((resolve, reject) => {
-      signInWithEmailAndPassword(auth, user, password)
-        .then((res) => { resolve(res) })
-        .catch((err) => { reject(err) })
+      logIn(auth, email, password)
+        .then(() => {
+          resolve('User logged')
+        })
+        .catch(err => {
+          reject(err)
+        })
     })
   }
 
-  const signOut = () => {}
+  const logOutUser = async () => {
+    await logOut(auth)
+  }
 
-  return { user, createUser, signIn, signOut }
+  return { user, registerUser, logInUser, logOutUser }
 }

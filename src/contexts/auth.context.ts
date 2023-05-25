@@ -3,8 +3,9 @@ import { type IUser } from '../types'
 
 interface IContext {
   user: IUser
-  signIn: (username: string, password: string) => Promise<unknown>
-  createUser: (username: string, password: string) => Promise<unknown>
+  logInUser: (username: string, password: string) => Promise<unknown>
+  logOutUser: (username: string, password: string) => Promise<unknown>
+  registerUser: (username: string, password: string) => Promise<unknown>
 }
 
 const authContext = createContext<IContext>({})

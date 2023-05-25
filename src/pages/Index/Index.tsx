@@ -1,5 +1,5 @@
 // Custom components
-import { CardLayout } from '../../components/CardLayout'
+import { CardLayout } from '../../layouts/CardLayout'
 import Login from '../Login/Login'
 
 // Styles
