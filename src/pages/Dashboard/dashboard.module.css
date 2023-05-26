@@ -1,0 +1,24 @@
+.dashboard {
+    display: grid;
+    gap: 0.5em;    
+    grid-template-areas: 
+    "toDo toDo integrations"
+    "toDo toDo integrations"
+    "toDo toDo recommendedApps"
+    "toDo toDo recommendedApps";
+
+    height:80vh;
+    padding: 2em;
+}
+
+.toDo {
+    grid-area: toDo;
+}
+
+.integrations {
+    grid-area: integrations;
+}
+
+.recommendedApps {
+    grid-area: recommendedApps;
+}
