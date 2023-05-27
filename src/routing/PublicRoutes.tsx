@@ -2,12 +2,12 @@ import { Navigate, Outlet } from 'react-router-dom'
 import { CRoutes } from '../constants'
 import { useAuthContext } from '../contexts'
 
-const PrivateRoutes = () => {
+const PublicRoutes = () => {
   const { user, sessionLoading } = useAuthContext()
 
   if (sessionLoading) return <h1>Loading</h1>
 
-  return user !== null ? <Outlet /> : <Navigate to={CRoutes.login} />
+  return ((user != null) ? <Navigate to={CRoutes.dashboard} /> : <Outlet />)
 }
 
-export default PrivateRoutes
+export default PublicRoutes

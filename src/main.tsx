@@ -1,5 +1,4 @@
 // Styles
-import '@fontsource/roboto'
 import './styles/normalize.css'
 
 // React

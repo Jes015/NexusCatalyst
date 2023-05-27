@@ -1,9 +1,6 @@
 lockfileVersion: '6.0'
 
 dependencies:
-  '@fontsource/roboto':
-    specifier: ^4.5.8
-    version: 4.5.8
   firebase:
     specifier: ^9.22.0
     version: 9.22.0
@@ -745,10 +742,6 @@ packages:
 
   /@firebase/webchannel-wrapper@0.10.0:
     resolution: {integrity: sha512-2I8y+vJVrPfPFJrnRGpao1Qc2Gu7wmYoo5ed2s5zK/DUGgcyY1Yr/xC0YdnKM4pi7rG3HqwW9ehAKUXoTMLdoA==}
-    dev: false
-
-  /@fontsource/roboto@4.5.8:
-    resolution: {integrity: sha512-CnD7zLItIzt86q4Sj3kZUiLcBk1dSk81qcqgMGaZe7SQ1P8hFNxhMl5AZthK1zrDM5m74VVhaOpuMGIL4gagaA==}
     dev: false
 
   /@grpc/grpc-js@1.7.3:

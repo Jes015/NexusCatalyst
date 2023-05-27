@@ -5,7 +5,7 @@ import { useUserAuth } from '../hooks/'
 import { authContext } from './'
 
 export const AuthContextProvider = ({ children }: { children?: JSX.Element }) => {
-  const { registerUser, logInUser, logOutUser, user } = useUserAuth()
+  const { registerUser, logInUser, logOutUser, user, sessionLoading } = useUserAuth()
 
-  return <authContext.Provider value={{ registerUser, logInUser, logOutUser, user }}> {children} </authContext.Provider>
+  return <authContext.Provider value={{ user, registerUser, logInUser, logOutUser, sessionLoading }}> {children} </authContext.Provider>
 }
