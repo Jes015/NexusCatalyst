@@ -2,17 +2,19 @@
     display: grid;
     gap: 0.5em;    
     grid-template-areas: 
-    "toDo toDo integrations"
-    "toDo toDo integrations"
-    "toDo toDo recommendedApps"
-    "toDo toDo recommendedApps";
+    "home home home home recommendedApps"
+    "home home home home integrations"
+    "home home home home integrations"
+    "home home home home integrations"
+    "s e d d integrations"
+    "s e d d integrations"
+    "s e d d integrations";
 
-    height:80vh;
-    padding: 2em;
+    height:90vh;
 }
 
-.toDo {
-    grid-area: toDo;
+.home {
+    grid-area: home;
 }
 
 .integrations {
@@ -21,4 +23,8 @@
 
 .recommendedApps {
     grid-area: recommendedApps;
+}
+
+.s {
+    grid-area: s;
 }

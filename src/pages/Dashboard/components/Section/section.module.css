@@ -1,9 +1,23 @@
 .section {
-    padding: 0.5em;
-    border: 1px solid red;
+    display: flex;
+    flex-direction: column;
+    padding: 1em;
     border-radius: 0.3em;
+    overflow: hidden;
 }
 
-.section__header {
+.section__main-column {
+    flex-direction: column;
+}
+.section__main-row {
+    flex-direction: row;
+    align-items: center;
+    flex-wrap: wrap;
+}
 
+.section__main {
+    display: flex;
+    gap: 0.5em;
+    flex-grow: 1;
+    overflow: auto;
 }

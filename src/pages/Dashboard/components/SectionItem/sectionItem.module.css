@@ -1,0 +1,17 @@
+.sectionItem {
+    cursor: pointer;
+}
+
+.sectionItem:hover .sectionItem__Header {
+    background-color: var(--body-terceary-background);
+}
+
+.sectionItem__Header {
+    background-color: var(--body-secondary-background);
+    padding: 1em;
+    border-radius: 0.3em;
+}
+
+.sectionItem__Footer {
+    text-align: center;
+}

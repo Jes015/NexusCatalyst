@@ -1,27 +1,30 @@
+import { CSection } from '../../consts/Section.const'
+
 import styles from './section.module.css'
 
 interface props {
   name: string
   className: string
+  type: typeof CSection[keyof typeof CSection]
+  children: React.ReactNode
 }
 
-export const Section = ({ name, className }: props) => {
+export const Section = ({ name, className, type, children }: props) => {
   return (
-        <section className={[styles.section, className].join(' ')}>
-            <header className={styles.section__header}>
-                <h3>{name}</h3>
-            </header>
-            <main>
-                <div>
-                    <header>
-                        <h5>Dweb</h5>
-                    </header>
-                    <footer>5: PM</footer>
-                </div>
-            </main>
-            <footer>
-                <span>Section footer</span>
-            </footer>
-        </section>
+    <section className={[styles.section, className].join(' ')}>
+      <header className={styles.section__header}>
+        <h3>{name}</h3>
+      </header>
+      <main className={
+        [
+          styles.section__main,
+          (type === CSection.App)
+            ? styles['section__main-row']
+            : styles['section__main-column']
+        ].join(' ')
+      }>
+        {children}
+      </main>
+    </section>
   )
 }
