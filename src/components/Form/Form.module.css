@@ -28,9 +28,3 @@
     background-color: var(--body-secondary-background);
     text-align: center;
 }
-
-.form__footer {
-    display: flex;
-    justify-content: center;
-    margin-top: 0.4em;
-}

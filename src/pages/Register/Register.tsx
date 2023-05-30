@@ -4,6 +4,7 @@ import { Link, useNavigate } from 'react-router-dom'
 // Custom components
 import { toast } from 'sonner'
 import { Form } from '../../components/'
+import { Input } from '../../components/Form/Input'
 import { CardLayout } from '../../layouts'
 
 // Constants
@@ -12,12 +13,19 @@ import { CRoutes } from '../../constants'
 // Context
 import { useAuthContext } from '../../contexts'
 
+const CInputs = {
+  Email: 'Email',
+  Password: 'Password'
+}
+
 const Register = () => {
   const { registerUser } = useAuthContext()
   const navigate = useNavigate()
 
-  const handleOnClickRegister = (user: string, password: string) => {
-    registerUser(user, password)
+  const handleOnClickRegister = (formData: FormData) => {
+    const email = formData.get(CInputs.Email) as string
+    const password = formData.get(CInputs.Password) as string
+    registerUser(email, password)
       .then((res) => {
         toast.success(res as string)
         console.log(res)
@@ -29,11 +37,13 @@ const Register = () => {
   }
 
   return (
-        <CardLayout>
-            <Form formTitle='Nexus Catalyst' buttonName='Register' onClickButton={handleOnClickRegister}>
-            <span>Or <Link to={CRoutes.index}>login</Link></span>
-            </Form>
-        </CardLayout>
+    <CardLayout>
+      <Form formTitle='Nexus Catalyst' buttonName='Register' onSumbit={handleOnClickRegister}>
+        <Input name='Email' type='email' />
+        <Input name='Password' type='password' />
+      </Form>
+      <span>Or <Link to={CRoutes.index}>login</Link></span>
+    </CardLayout>
   )
 }
 

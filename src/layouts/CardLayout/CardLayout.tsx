@@ -1,7 +1,7 @@
 import styles from './cardLayout.module.css'
 
 interface props {
-  children: JSX.Element
+  children: React.ReactNode
 }
 
 export const CardLayout = ({ children }: props) => {

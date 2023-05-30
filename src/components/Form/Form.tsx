@@ -1,20 +1,35 @@
 // Styles
 import styles from './Form.module.css'
 
+// Custom components
+import { toast } from 'sonner'
+
 interface props {
   formTitle: string
   buttonName: string
-  onClickButton: (username: string, password: string) => void
-  children?: JSX.Element
+  onSumbit: (formData: FormData) => void
+  children: React.ReactNode
 }
 
-export const Form = ({ formTitle, buttonName, onClickButton, children }: props) => {
+export const Form = ({ formTitle, buttonName, onSumbit, children }: props) => {
   const handleOnSumbit = (event: React.FormEvent<HTMLFormElement>) => {
     event.preventDefault()
 
-    const form = new FormData(event.target as HTMLFormElement)
+    const form = event.target as HTMLFormElement
+    const formData = new FormData(form)
 
-    onClickButton(form.get('email') as string, form.get('password') as string)
+    let error = false
+    formData.forEach((input) => {
+      if (input === '') {
+        error = true
+      }
+    })
+
+    if (error) {
+      toast.error('Every field is needed', { style: { background: '#f05a5a' } })
+    } else {
+      onSumbit(formData)
+    }
   }
 
   return (
@@ -24,20 +39,10 @@ export const Form = ({ formTitle, buttonName, onClickButton, children }: props) 
       </header>
       <main>
         <form onSubmit={handleOnSumbit} className={styles.form__form}>
-          <div className={styles.form__group}>
-            <label htmlFor='email'>Email</label>
-            <input name='email' id='email' />
-          </div>
-          <div className={styles.form__group}>
-            <label htmlFor='password'>Password</label>
-            <input name='password' id='password' />
-          </div>
+          {children}
           <button>{buttonName}</button>
         </form>
       </main>
-      <footer className={styles.form__footer}>
-        {children}
-      </footer>
     </section>
   )
 }
