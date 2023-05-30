@@ -29,7 +29,7 @@ const SectionItemIntegrations = ({ title, description }: ISectionItemProps) => {
       <main>
           {isWindowVisible &&
           <Suspense fallback={<span>Loading integration</span>}>
-            <WinBox className='winbox.theme' onClose={handleWindowOnClose} title={title} icon='/favicon.ico' url='https://dev-vault-ochre.vercel.app/' />
+            <WinBox max onClose={handleWindowOnClose} title={title} icon='https://dev-vault-ochre.vercel.app/favicon.ico' url='https://dev-vault-ochre.vercel.app/' />
           </Suspense>
           }
       </main>

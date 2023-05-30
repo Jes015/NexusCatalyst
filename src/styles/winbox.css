@@ -12,13 +12,14 @@
     position: fixed;
     left: 0;
     top: 0;
-    background: var(--body-secondary-background);
+    width: 500px;
+    background: var(--body-terceary-background);
     box-shadow: 0 14px 28px rgba(0, 0, 0, .25), 0 10px 10px rgba(0, 0, 0, .22);
     transition: width .3s, height .3s, left .3s, top .3s;
     transition-timing-function: cubic-bezier(.3, 1, .3, 1);
     contain: layout size;
     text-align: left;
-    touch-action: none
+    touch-action: none;
 }
 
 .wb-body,
@@ -45,7 +46,7 @@
     -webkit-overflow-scrolling: touch;
     overflow-scrolling: touch;
     will-change: contents;
-    background: #fff;
+    background: var(--body-primary-background);
     margin-top: 0 !important;
     contain: strict;
     z-index: 0
