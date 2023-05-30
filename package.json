@@ -15,8 +15,7 @@
     "react-dom": "^18.2.0",
     "react-router-dom": "^6.11.2",
     "react-winbox": "^1.5.0",
-    "sonner": "^0.3.5",
-    "winbox": "^0.2.6"
+    "sonner": "^0.3.5"
   },
   "devDependencies": {
     "@types/react": "^18.0.28",

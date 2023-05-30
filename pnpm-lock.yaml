@@ -19,9 +19,6 @@ dependencies:
   sonner:
     specifier: ^0.3.5
     version: 0.3.5(react-dom@18.2.0)(react@18.2.0)
-  winbox:
-    specifier: ^0.2.6
-    version: 0.2.6
 
 devDependencies:
   '@types/react':
