@@ -8,10 +8,15 @@ import type { IUser } from '../types'
 import { logIn, logOut, register } from '../services/user.service'
 
 // Firebase
-import { browserLocalPersistence, onAuthStateChanged, setPersistence } from 'firebase/auth'
-import { auth } from '../firebase.config'
+import { browserLocalPersistence, onAuthStateChanged, setPersistence, type Auth } from 'firebase/auth'
 
-export const useUserAuth = () => {
+interface IParams {
+  auth: Auth
+}
+
+export const useUserAuth = ({ auth }: IParams) => {
+  if (auth == null) throw new Error('Auth is missing')
+
   const [user, setUser] = useState<IUser | null>(null)
   const [sessionLoading, setSessionLoading] = useState(true)
 

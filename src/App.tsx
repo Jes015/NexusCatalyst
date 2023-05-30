@@ -5,9 +5,8 @@ import { AuthContextProvider } from './contexts'
 import { Routing } from './routing'
 
 // Styles
-import 'winbox/dist/css/themes/modern.min.css'
-import 'winbox/dist/css/winbox.min.css'
 import './styles/Global.css'
+import './styles/winbox.css'
 
 function App () {
   return (

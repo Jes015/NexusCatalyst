@@ -1,37 +1,68 @@
-import { CSection } from '../../consts/Section.const'
-
+import { Suspense, useState } from 'react'
+import WinBox from 'react-winbox'
 import styles from './sectionItem.module.css'
+
+// const WinBox = lazy(async () => await import('react-winbox'))
+
+interface ISectionItemProps {
+  title: string
+  description: string
+}
+
+const SectionItemIntegrations = ({ title, description }: ISectionItemProps) => {
+  const [isWindowVisible, setWindowVisible] = useState(false)
+  const [isOpenWindow, setOpenWindow] = useState(false)
+
+  const handleOnClick = (event: React.MouseEvent<HTMLDivElement, MouseEvent>) => {
+    console.log(event)
+    setWindowVisible(true)
+  }
+
+  const handleWindowOnClose = () => {
+    setWindowVisible(false)
+  }
+  return (
+    <div className={styles.sectionItem} onClick={handleOnClick}>
+      <header className={styles.sectionItem__Header}>
+        <span>{title}</span>
+      </header>
+      <main>
+          {isWindowVisible &&
+          <Suspense fallback={<span>Loading integration</span>}>
+            <WinBox className='winbox.theme' onClose={handleWindowOnClose} title={title} icon='/favicon.ico' url='https://dev-vault-ochre.vercel.app/' />
+          </Suspense>
+          }
+      </main>
+    </div>
+  )
+}
 
 interface ISectionItemAppProps {
   title: string
   url: string
-  type: typeof CSection[keyof typeof CSection]
+  logo?: boolean
 }
 
-const SectionItem = ({ title, url, type }: ISectionItemAppProps) => {
+const SectionItemApp = ({ title, url, logo = false }: ISectionItemAppProps) => {
   return (
     <a href={url} target='_blank' rel='noreferrer'>
       <div className={styles.sectionItem}>
         <header className={styles.sectionItem__Header}>
-        {type === CSection.App ? <img style={{ width: '50px' }} src={`https://logo.clearbit.com/${url}?size=400`} /> : <span>{title}</span>}
+          {
+            logo
+              ? <img style={{ width: '50px' }} src={`https://logo.clearbit.com/${url}?size=400`} />
+              : <span style={{ fontSize: '0.7em', fontWeight: 'bolder' }}>{title}</span>
+          }
         </header>
         <footer className={styles.sectionItem__Footer}>
-          {type === CSection.App && <span style={{ fontSize: '0.7em', fontWeight: 'bolder' }}>{title}</span>}
+          {
+            logo &&
+            <span style={{ fontSize: '0.7em', fontWeight: 'bolder' }}>{title}</span>
+          }
         </footer>
       </div>
     </a>
   )
 }
 
-const SectionItemApp = () => {
-  return (
-    <div>
-      <header>
-        <h5>Dweb</h5>
-      </header>
-      <footer>5: PM</footer>
-    </div>
-  )
-}
-
-export { SectionItem, SectionItemApp }
+export { SectionItemIntegrations, SectionItemApp }

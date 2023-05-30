@@ -6,9 +6,9 @@
     "home home home home integrations"
     "home home home home integrations"
     "home home home home integrations"
-    "s e d d integrations"
-    "s e d d integrations"
-    "s e d d integrations";
+    "todo todo todo d integrations"
+    "todo todo todo d integrations"
+    "todo todo todo d integrations";
 
     height:90vh;
 }
@@ -25,6 +25,6 @@
     grid-area: recommendedApps;
 }
 
-.s {
-    grid-area: s;
+.todo {
+    grid-area: todo;
 }
