@@ -1,6 +1,13 @@
-const CSection = {
-  App: Symbol('App'),
-  Text: Symbol('Text')
-}
+const CSectionsName = {
+  Home: 'Home',
+  RecommendedApps: 'RecommendedApps',
+  ToDo: 'To Do',
+  Integrations: 'Integrations'
+} as const
 
-export { CSection }
+const CSectionDirection = {
+  Column: Symbol('Column'),
+  Row: Symbol('Row')
+} as const
+
+export { CSectionsName, CSectionDirection }

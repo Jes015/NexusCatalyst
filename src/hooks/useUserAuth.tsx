@@ -21,7 +21,7 @@ export const useUserAuth = ({ auth }: IParams) => {
   const [sessionLoading, setSessionLoading] = useState(true)
 
   useEffect(() => {
-    onAuthStateChanged(auth, currentUser => {
+    onAuthStateChanged(auth, (currentUser) => {
       setPersistence(auth, browserLocalPersistence)
         .then(() => {
           setUser(currentUser as IUser)

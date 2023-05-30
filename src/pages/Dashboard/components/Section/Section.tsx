@@ -1,15 +1,15 @@
-import { CSection } from '../../consts/Section.const'
+import { CSectionDirection } from '../../consts/Section.const'
 
 import styles from './section.module.css'
 
 interface props {
   name: string
   className: string
-  type: typeof CSection[keyof typeof CSection]
+  direction: typeof CSectionDirection[keyof typeof CSectionDirection]
   children: React.ReactNode
 }
 
-export const Section = ({ name, className, type, children }: props) => {
+export const Section = ({ name, className, direction, children }: props) => {
   return (
     <section className={[styles.section, className].join(' ')}>
       <header className={styles.section__header}>
@@ -18,7 +18,7 @@ export const Section = ({ name, className, type, children }: props) => {
       <main className={
         [
           styles.section__main,
-          (type === CSection.App)
+          (direction === CSectionDirection.Row)
             ? styles['section__main-row']
             : styles['section__main-column']
         ].join(' ')

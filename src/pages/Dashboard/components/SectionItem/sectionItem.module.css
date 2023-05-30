@@ -7,6 +7,9 @@
 }
 
 .sectionItem__Header {
+    display: flex;
+    align-items: center;
+    gap: 0.5em;
     background-color: var(--body-secondary-background);
     padding: 1em;
     border-radius: 0.3em;

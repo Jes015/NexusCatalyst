@@ -1,1 +1,3 @@
-export * from './SectionItem'
+export * from './SectionItemApp'
+export * from './SectionItemIntegrations'
+

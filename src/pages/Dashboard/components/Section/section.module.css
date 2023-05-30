@@ -6,18 +6,19 @@
     overflow: hidden;
 }
 
-.section__main-column {
-    flex-direction: column;
-}
-.section__main-row {
-    flex-direction: row;
-    align-items: center;
-    flex-wrap: wrap;
-}
-
 .section__main {
     display: flex;
     gap: 0.5em;
     flex-grow: 1;
     overflow: auto;
+}
+
+.section__main-column {
+    flex-direction: column;
+}
+
+.section__main-row {
+    flex-direction: row;
+    align-items: start;
+    flex-wrap: wrap;
 }
