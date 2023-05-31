@@ -1,5 +1,5 @@
+import { RemoveIcon } from '@src/components/Icons'
 import { Suspense, lazy, useState } from 'react'
-import { RemoveIcon } from '../../../../components/Icons'
 import styles from './sectionItemIntegrations.module.css'
 
 const Window = lazy(async () => await import('../../../../components/Window/Window'))

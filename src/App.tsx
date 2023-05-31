@@ -1,12 +1,9 @@
-// Custom components
+import { Background } from '@src/components'
+import { AuthContextProvider } from '@src/contexts'
+import { Routing } from '@src/routing'
+import '@src/styles/Global.css'
+import '@src/styles/winbox.css'
 import { Toaster } from 'sonner'
-import { Background } from './components'
-import { AuthContextProvider } from './contexts'
-import { Routing } from './routing'
-
-// Styles
-import './styles/Global.css'
-import './styles/winbox.css'
 
 function App () {
   return (

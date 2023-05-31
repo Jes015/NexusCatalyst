@@ -1,17 +1,9 @@
-// React Router Dom
+import { Form, Input } from '@src/components/'
+import { CRoutes } from '@src/constants'
+import { useAuthContext } from '@src/contexts'
+import { CardLayout } from '@src/layouts'
 import { Link, useNavigate } from 'react-router-dom'
-
-// Custom components
 import { toast } from 'sonner'
-import { Form } from '../../components/'
-import { Input } from '../../components/Form/Input'
-import { CardLayout } from '../../layouts'
-
-// Constants
-import { CRoutes } from '../../constants'
-
-// Context
-import { useAuthContext } from '../../contexts'
 
 const CInputs = {
   Email: 'Email',

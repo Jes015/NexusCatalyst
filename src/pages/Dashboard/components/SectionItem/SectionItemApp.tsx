@@ -1,4 +1,4 @@
-import { RemoveIcon } from '../../../../components/Icons'
+import { RemoveIcon } from '@src/components/Icons'
 import styles from './sectionItemApp.module.css'
 
 interface ISectionItemAppProps {

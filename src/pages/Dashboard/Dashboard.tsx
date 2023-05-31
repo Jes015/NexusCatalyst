@@ -1,6 +1,5 @@
-import { SectionItemApp, SectionItemIntegrations } from './components'
-import { Section } from './components/Section/'
-import { CSectionDirection, CSectionsName } from './consts/Section.const'
+import { Section, SectionItemApp, SectionItemIntegrations } from '@src/pages/Dashboard/components'
+import { CSectionDirection, CSectionsName } from '@src/pages/Dashboard/consts/Section.const'
 
 import styles from './dashboard.module.css'
 

@@ -1,6 +1,6 @@
+import { CRoutes } from '@src/constants'
+import { useAuthContext } from '@src/contexts'
 import { Navigate, Outlet } from 'react-router-dom'
-import { CRoutes } from '../constants'
-import { useAuthContext } from '../contexts'
 
 const PublicRoutes = () => {
   const { user, sessionLoading } = useAuthContext()

@@ -1,6 +1,5 @@
-// Custom components
-import { CardLayout } from '../../layouts/CardLayout'
-import Login from '../Login/Login'
+import { CardLayout } from '@src/layouts/CardLayout'
+import Login from '@src/pages/Login/Login'
 
 // Styles
 import styles from './Index.module.css'

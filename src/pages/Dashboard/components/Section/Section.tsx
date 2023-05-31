@@ -1,5 +1,5 @@
-import { AddIcon } from '../../../../components/Icons'
-import { CSectionDirection } from '../../consts/Section.const'
+import { AddIcon } from '@src/components/Icons'
+import { CSectionDirection } from '@src/pages/Dashboard/consts/Section.const'
 
 import styles from './section.module.css'
 

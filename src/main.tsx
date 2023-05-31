@@ -1,9 +1,6 @@
-// Styles
-import './styles/normalize.css'
-
-// React
+import App from '@src/App'
+import '@src/styles/normalize.css'
 import { createRoot } from 'react-dom/client'
-import App from './App'
 
 const rootElement = document.getElementById('root') as HTMLElement
 const root = createRoot(rootElement)
