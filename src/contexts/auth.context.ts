@@ -1,5 +1,5 @@
+import { type IUser } from '@src/types'
 import { createContext, useContext } from 'react'
-import { type IUser } from '../types'
 
 interface IContext {
   user: IUser | null

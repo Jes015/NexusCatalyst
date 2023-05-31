@@ -1,13 +1,8 @@
 // React
 import { useEffect, useState } from 'react'
 
-// Types
-import type { IUser } from '../types'
-
-// Services
-import { logIn, logOut, register } from '../services/user.service'
-
-// Firebase
+import { logIn, logOut, register } from '@src/services/user.service'
+import type { IUser } from '@src/types'
 import { browserLocalPersistence, onAuthStateChanged, setPersistence, type Auth } from 'firebase/auth'
 
 interface IParams {

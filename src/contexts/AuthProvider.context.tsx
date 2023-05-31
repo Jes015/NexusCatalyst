@@ -1,11 +1,6 @@
-// Custom hooks
-import { useUserAuth } from '../hooks/'
-
-// Context
-import { authContext } from './'
-
-// Firebase config
-import { auth } from '../firebase.config'
+import { authContext } from '@src/contexts'
+import { auth } from '@src/firebase.config'
+import { useUserAuth } from '@src/hooks/'
 
 export const AuthContextProvider = ({ children }: { children?: JSX.Element }) => {
   const { registerUser, logInUser, logOutUser, user, sessionLoading } = useUserAuth({ auth })
