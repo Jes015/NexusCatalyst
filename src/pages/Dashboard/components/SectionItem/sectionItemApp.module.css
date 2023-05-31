@@ -1,0 +1,41 @@
+.sectionItem {
+    position: relative;
+    cursor: pointer;
+}
+
+.sectionItem:hover .sectionItem__Header {
+    background-color: var(--body-terceary-background);
+}
+
+.sectionItem__Header {
+    display: flex;
+    align-items: center;
+    background-color: var(--body-secondary-background);
+    border-radius: 0.3em;
+    padding: 1em;
+}
+
+.sectionItem__Title {
+    font-size: 0.7em;
+    font-weight: bolder;
+}
+
+.sectionItem__Image {
+    width: 3.125em
+}
+
+.sectionItem__closeButton {
+    position: absolute;
+    top: -0.1em;
+    right: -0.4em;
+}
+
+.sectionItem__Footer {
+    margin-top: 0.3em;
+    text-align: center;
+    font-size: 0.7em
+}
+
+.sectionItem__closeButton:hover {
+    cursor: not-allowed;
+}

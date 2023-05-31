@@ -6,11 +6,18 @@
     overflow: hidden;
 }
 
+.section__header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
 .section__main {
     display: flex;
     gap: 0.5em;
     flex-grow: 1;
-    overflow: auto;
+    overflow-y: auto;
+    overflow-x: hidden;
 }
 
 .section__main-column {

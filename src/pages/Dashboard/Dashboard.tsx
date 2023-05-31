@@ -21,18 +21,18 @@ const Dashboard = () => {
         <SectionItemApp title='Facebook' logo={true} url='https://www.facebook.com' />
       </Section>
       <Section name={CSectionsName.Integrations} className={styles.integrations} direction={CSectionDirection.Column}>
-        <SectionItemIntegrations title='Facebook' url='https://www.facebook.com' />
-        <SectionItemIntegrations title='Facebook' url='https://www.facebook.com' />
-        <SectionItemIntegrations title='Facebook' url='https://www.facebook.com' />
-        <SectionItemIntegrations title='Facebook' url='https://www.facebook.com' />
-        <SectionItemIntegrations title='Facebook' url='https://www.facebook.com' />
+        <SectionItemIntegrations description='Description' title='Facebook' url='https://www.facebook.com' />
+        <SectionItemIntegrations description='Description' title='Facebook' url='https://www.facebook.com' />
+        <SectionItemIntegrations description='Description' title='Facebook' url='https://www.facebook.com' />
+        <SectionItemIntegrations description='Description' title='Facebook' url='https://www.facebook.com' />
+        <SectionItemIntegrations description='Description' title='Facebook' url='https://www.facebook.com' />
       </Section>
       <Section name={CSectionsName.RecommendedApps} className={styles.recommendedApps} direction={CSectionDirection.Column}>
-        <SectionItemIntegrations title='Facebook' url='https://www.facebook.com' />
-        <SectionItemIntegrations title='Facebook' url='https://www.facebook.com' />
-        <SectionItemIntegrations title='Facebook' url='https://www.facebook.com' />
-        <SectionItemIntegrations title='Facebook' url='https://www.facebook.com' />
-        <SectionItemIntegrations title='Facebook' url='https://www.facebook.com' />
+        <SectionItemIntegrations description='Description' title='Facebook' url='https://www.facebook.com' />
+        <SectionItemIntegrations description='Description' title='Facebook' url='https://www.facebook.com' />
+        <SectionItemIntegrations description='Description' title='Facebook' url='https://www.facebook.com' />
+        <SectionItemIntegrations description='Description' title='Facebook' url='https://www.facebook.com' />
+        <SectionItemIntegrations description='Description' title='Facebook' url='https://www.facebook.com' />
       </Section>
       <Section name={CSectionsName.ToDo} className={styles.todo} direction={CSectionDirection.Column}>
         <SectionItemApp title='Facebook' url='https://www.facebook.com' />

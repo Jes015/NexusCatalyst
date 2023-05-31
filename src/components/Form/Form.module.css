@@ -28,3 +28,8 @@
     background-color: var(--body-secondary-background);
     text-align: center;
 }
+
+.form__button {
+    background-color: var(--button-primary-background);
+    padding: 0.6em;
+}

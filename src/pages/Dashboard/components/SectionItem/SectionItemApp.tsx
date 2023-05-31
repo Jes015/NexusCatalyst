@@ -1,4 +1,5 @@
-import styles from './sectionItem.module.css'
+import { RemoveIcon } from '../../../../components/Icons'
+import styles from './sectionItemApp.module.css'
 
 interface ISectionItemAppProps {
   title: string
@@ -8,22 +9,25 @@ interface ISectionItemAppProps {
 
 export const SectionItemApp = ({ title, url, logo = false }: ISectionItemAppProps) => {
   return (
-    <a href={url} target='_blank' rel='noreferrer'>
-      <div className={styles.sectionItem}>
+    <div className={styles.sectionItem}>
+      <a href={url} target='_blank' rel='noreferrer'>
         <header className={styles.sectionItem__Header}>
           {
             logo
-              ? <img style={{ width: '50px' }} src={`https://logo.clearbit.com/${url}?size=400`} />
-              : <span style={{ fontSize: '0.7em', fontWeight: 'bolder' }}>{title}</span>
+              ? <img className={styles.sectionItem__Image} src={`https://logo.clearbit.com/${url}?size=400`} />
+              : <span className={styles.sectionItem__Title}>{title}</span>
           }
         </header>
         <footer className={styles.sectionItem__Footer}>
           {
             logo &&
-            <span style={{ fontSize: '0.7em' }}>{title}</span>
+            <span>{title}</span>
           }
         </footer>
-      </div>
-    </a>
+      </a>
+      <button className={styles.sectionItem__closeButton}>
+        <RemoveIcon height='1.4em' width='1.4em' />
+      </button>
+    </div >
   )
 }

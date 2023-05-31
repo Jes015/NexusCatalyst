@@ -1,0 +1,49 @@
+.sectionItem {
+    position: relative;
+    cursor: pointer;
+}
+
+.sectionItem:hover .sectionItem__Header {
+    background-color: var(--body-terceary-background);
+}
+
+.sectionItem__Main {
+    display: flex;
+    align-items: center;
+    gap: 0.5em;
+    background-color: var(--body-secondary-background);
+    padding: 1em;
+    border-radius: 0.3em;
+}
+
+.sectionItem__Info {
+    display: flex;
+    flex-direction: column;
+    gap: 0;
+}
+
+.sectionItem__Title {
+    color: var(--ancord-primary-color);
+    font-weight: 600;
+    font-size: 0.8em;
+}
+
+.sectionItem__Description {
+    color: var(--text-secondary-color);
+    font-weight: 600;
+    font-size: 0.55em;
+}
+
+.sectionItem__Image {
+    width: 1.4em
+}
+
+.sectionItem__closeButton {
+    position: absolute;
+    top: 0.05em;
+    right: -0.3em;
+}
+
+.sectionItem__closeButton:hover {
+    cursor: not-allowed;
+}

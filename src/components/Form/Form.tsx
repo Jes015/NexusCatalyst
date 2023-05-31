@@ -40,7 +40,7 @@ export const Form = ({ formTitle, buttonName, onSumbit, children }: props) => {
       <main>
         <form onSubmit={handleOnSumbit} className={styles.form__form}>
           {children}
-          <button>{buttonName}</button>
+          <button className={styles.form__button}>{buttonName}</button>
         </form>
       </main>
     </section>

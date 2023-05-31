@@ -1,3 +1,4 @@
+import { AddIcon } from '../../../../components/Icons'
 import { CSectionDirection } from '../../consts/Section.const'
 
 import styles from './section.module.css'
@@ -14,6 +15,9 @@ export const Section = ({ name, className, direction, children }: props) => {
     <section className={[styles.section, className].join(' ')}>
       <header className={styles.section__header}>
         <h3>{name}</h3>
+        <button style={{ backgroundColor: 'transparent' }}>
+          <AddIcon height='1.5em' width='1.5em' />
+        </button>
       </header>
       <main className={
         [
