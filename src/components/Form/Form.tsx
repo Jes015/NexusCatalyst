@@ -1,17 +1,16 @@
-// Styles
-import styles from './Form.module.css'
-
-// Custom components
+import { Input } from '@src/components/'
+import { type IInput } from '@src/types'
 import { toast } from 'sonner'
+import styles from './Form.module.css'
 
 interface props {
   formTitle: string
   buttonName: string
   onSumbit: (formData: FormData) => void
-  children: React.ReactNode
+  inputsData: IInput[]
 }
 
-export const Form = ({ formTitle, buttonName, onSumbit, children }: props) => {
+export const Form = ({ formTitle, buttonName, onSumbit, inputsData }: props) => {
   const handleOnSumbit = (event: React.FormEvent<HTMLFormElement>) => {
     event.preventDefault()
 
@@ -39,7 +38,11 @@ export const Form = ({ formTitle, buttonName, onSumbit, children }: props) => {
       </header>
       <main>
         <form onSubmit={handleOnSumbit} className={styles.form__form}>
-          {children}
+          {
+            inputsData.map((inputData) => (
+              <Input key={inputData.name} data={inputData} />
+            ))
+          }
           <button className={styles.form__button}>{buttonName}</button>
         </form>
       </main>

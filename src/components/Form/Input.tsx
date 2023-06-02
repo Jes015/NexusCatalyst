@@ -1,15 +1,15 @@
+import { type IInput } from '@src/types'
 import styles from './Form.module.css'
 
 interface props {
-  name: string
-  type: React.HTMLInputTypeAttribute
+  data: IInput
 }
 
-export const Input = ({ name, type }: props) => {
+export const Input = ({ data }: props) => {
   return (
     <div className={styles.form__group}>
-        <label htmlFor={name}>{name}</label>
-        <input name={name} id={name} type={type} />
+        <label htmlFor={data.name}>{data.name}</label>
+        <input name={data.name} id={data.name} type={data.type} />
     </div>
   )
 }

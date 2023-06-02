@@ -2,7 +2,7 @@ import { RemoveIcon } from '@src/components/Icons'
 import { Suspense, lazy, useState } from 'react'
 import styles from './sectionItemIntegrations.module.css'
 
-const Window = lazy(async () => await import('../../../../components/Window/Window'))
+const Window = lazy(async () => await import('@src/components/Window/Window'))
 
 interface ISectionItemProps {
   title: string
@@ -21,7 +21,7 @@ export const SectionItemIntegrations = ({ title, url, description }: ISectionIte
     <div className={styles.sectionItem}>
       <div onClick={handleOnClick}>
         <main className={styles.sectionItem__Main}>
-          <img className={styles.sectionItem__Image} src={`${url}/favicon.ico`} />
+          <img className={styles.sectionItem__Image} src={`https://logo.clearbit.com/${url}?size=400`} />
           <div>
             <span className={styles.sectionItem__Title}>{title}</span>
             <p className={styles.sectionItem__Description}>{description}</p>

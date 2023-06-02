@@ -1,21 +1,30 @@
 import { AddIcon } from '@src/components/Icons'
-import { CSectionDirection } from '@src/pages/Dashboard/consts/Section.const'
-
+import { CSectionDirection, type CSectionsName } from '@src/pages/Dashboard/constants/'
+import { Suspense, lazy, useState } from 'react'
 import styles from './section.module.css'
+const Window = lazy(async () => await import('@src/components/Window/Window'))
+const Login = lazy(async () => await import('@src/pages/Login/Login'))
 
 interface props {
-  name: string
+  name: typeof CSectionsName[keyof typeof CSectionsName]
   className: string
   direction: typeof CSectionDirection[keyof typeof CSectionDirection]
   children: React.ReactNode
+  form: JSX.Element
 }
 
 export const Section = ({ name, className, direction, children }: props) => {
+  const [isWindowVisible, setWindowVisible] = useState(false)
+
+  const handleOnClick = () => {
+    setWindowVisible(true)
+  }
+
   return (
     <section className={[styles.section, className].join(' ')}>
       <header className={styles.section__header}>
         <h3>{name}</h3>
-        <button style={{ backgroundColor: 'transparent' }}>
+        <button onClick={handleOnClick} style={{ backgroundColor: 'transparent' }}>
           <AddIcon height='1.5em' width='1.5em' />
         </button>
       </header>
@@ -27,6 +36,14 @@ export const Section = ({ name, className, direction, children }: props) => {
             : styles['section__main-column']
         ].join(' ')
       }>
+        <Suspense>
+          {
+            isWindowVisible &&
+              <Window setWindowVisible={setWindowVisible} title='Holaaaaa'>
+                <Login />
+              </Window>
+          }
+        </Suspense>
         {children}
       </main>
     </section>

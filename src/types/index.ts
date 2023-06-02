@@ -1,1 +1,3 @@
-export * from './user.type'
+export * from './input.types'
+export * from './user.types'
+

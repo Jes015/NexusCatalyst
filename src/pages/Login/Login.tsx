@@ -1,23 +1,33 @@
-import { Form, Input } from '@src/components'
+import { Form } from '@src/components'
 import { CRoutes } from '@src/constants'
 import { useAuthContext } from '@src/contexts'
 import { CardLayout } from '@src/layouts'
+import { type IInput } from '@src/types'
 import { Link, useNavigate } from 'react-router-dom'
 import { toast } from 'sonner'
 
-const CInputs = {
-  Email: 'Email',
-  Password: 'Password'
-}
+const CInputs: IInput[] = [
+  {
+    name: 'Email',
+    type: 'email'
+  },
+  {
+    name: 'Password',
+    type: 'password'
+  }
+]
 
 const Login = () => {
   const { logInUser } = useAuthContext()
 
   const navigate = useNavigate()
 
-  const handleOnClickLogin = (formData: FormData) => {
-    const email = formData.get(CInputs.Email) as string
-    const password = formData.get(CInputs.Password) as string
+  const handleOnSumbitLogin = (formData: FormData) => {
+    const [CInputEmail, CInputPassword] = CInputs
+
+    const email = formData.get(CInputEmail.name) as string
+    const password = formData.get(CInputPassword.name) as string
+
     logInUser(email, password)
       .then(res => {
         toast.success(res as string)
@@ -30,10 +40,7 @@ const Login = () => {
 
   return (
     <CardLayout>
-      <Form formTitle='Nexus Catalyst' buttonName='Login' onSumbit={handleOnClickLogin}>
-        <Input name={CInputs.Email} type={CInputs.Email} />
-        <Input name={CInputs.Password} type={CInputs.Password} />
-      </Form>
+      <Form formTitle='Nexus Catalyst' buttonName='Login' onSumbit={handleOnSumbitLogin} inputsData={CInputs} />
       <span>Or <Link to={CRoutes.register}>register</Link></span>
     </CardLayout>
   )
