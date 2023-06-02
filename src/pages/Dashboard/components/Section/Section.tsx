@@ -2,8 +2,8 @@ import { AddIcon } from '@src/components/Icons'
 import { CSectionDirection, type CSectionsName } from '@src/pages/Dashboard/constants/'
 import { Suspense, lazy, useState } from 'react'
 import styles from './section.module.css'
-const Window = lazy(async () => await import('@src/components/Window/Window'))
-const Login = lazy(async () => await import('@src/pages/Login/Login'))
+const Window = lazy(() => import('@src/components/Window/Window'))
+const SectionForm = lazy(() => import('@src/pages/Dashboard/components/SectionForm/SectionForm'))
 
 interface props {
   name: typeof CSectionsName[keyof typeof CSectionsName]
@@ -39,9 +39,9 @@ export const Section = ({ name, className, direction, children }: props) => {
         <Suspense>
           {
             isWindowVisible &&
-              <Window setWindowVisible={setWindowVisible} title='Holaaaaa'>
-                <Login />
-              </Window>
+            <Window setWindowVisible={setWindowVisible} title='Holaaaaa'>
+              {<SectionForm title={name} />}
+            </Window>
           }
         </Suspense>
         {children}
