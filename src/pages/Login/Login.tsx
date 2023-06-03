@@ -2,31 +2,29 @@ import { Form } from '@src/components'
 import { CRoutes } from '@src/constants'
 import { useAuthContext } from '@src/contexts'
 import { CardLayout } from '@src/layouts'
-import { type IInput } from '@src/types'
+import { type FormDataAdapted, type IInputs } from '@src/types'
 import { Link, useNavigate } from 'react-router-dom'
 import { toast } from 'sonner'
 
-const CInputs: IInput[] = [
-  {
+const CInputs: IInputs = {
+  email: {
     name: 'Email',
     type: 'email'
   },
-  {
+  password: {
     name: 'Password',
     type: 'password'
   }
-]
+}
 
 const Login = () => {
   const { logInUser } = useAuthContext()
 
   const navigate = useNavigate()
 
-  const handleOnSumbitLogin = (formData: FormData) => {
-    const [CInputEmail, CInputPassword] = CInputs
-
-    const email = formData.get(CInputEmail.name) as string
-    const password = formData.get(CInputPassword.name) as string
+  const handleOnSumbitLogin = (formData: FormDataAdapted) => {
+    const email = formData[CInputs.email.name]
+    const password = formData[CInputs.password.name]
 
     logInUser(email, password)
       .then(res => {

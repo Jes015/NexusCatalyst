@@ -1,13 +1,14 @@
+import { adaptFormData } from '@src/adapter'
 import { Input } from '@src/components/'
-import { type IInput } from '@src/types'
+import { type FormDataAdapted, type IInputs } from '@src/types'
 import { toast } from 'sonner'
 import styles from './Form.module.css'
 
 interface props {
   formTitle: string
   buttonName: string
-  onSumbit: (formData: FormData) => void
-  inputsData: IInput[]
+  onSumbit: (formData: FormDataAdapted) => void
+  inputsData: IInputs
 }
 
 export const Form = ({ formTitle, buttonName, onSumbit, inputsData }: props) => {
@@ -17,17 +18,22 @@ export const Form = ({ formTitle, buttonName, onSumbit, inputsData }: props) => 
     const form = event.target as HTMLFormElement
     const formData = new FormData(form)
 
+    // Someone who wants to make this more functional. It's ok <3
     let error = false
-    formData.forEach((input) => {
-      if (input === '') {
+    for (const [, value] of formData) {
+      if (value === '') {
         error = true
+        break
       }
-    })
+    }
 
     if (error) {
-      toast.error('Every field is needed', { style: { background: '#f05a5a' } })
+      toast.error('Every field is needed', { style: { background: '#f05a5a', border: 'none' } })
     } else {
-      onSumbit(formData)
+      const dataAdapted = adaptFormData(formData)
+      onSumbit(dataAdapted)
+      form.reset()
+      toast.success('Data sended')
     }
   }
 
@@ -39,7 +45,7 @@ export const Form = ({ formTitle, buttonName, onSumbit, inputsData }: props) => 
       <main>
         <form onSubmit={handleOnSumbit} className={styles.form__form}>
           {
-            inputsData.map((inputData) => (
+            Object.entries(inputsData).map(([, inputData]) => (
               <Input key={inputData.name} data={inputData} />
             ))
           }

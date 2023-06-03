@@ -5,4 +5,8 @@ interface IInput {
   type: HTMLInputTypeAttribute
 }
 
-export type { IInput }
+type IInputs = Record<string, IInput>
+
+type FormDataAdapted = Record<string, string>
+
+export type { IInput, IInputs, FormDataAdapted }

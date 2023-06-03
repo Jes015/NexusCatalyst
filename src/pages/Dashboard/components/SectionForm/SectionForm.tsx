@@ -1,37 +1,35 @@
 import { Form } from '@src/components'
+import { CardLayout } from '@src/layouts'
 import { type CSectionsName } from '@src/pages/Dashboard/constants/'
-import { type IInput } from '@src/types'
+import { type FormDataAdapted, type IInputs } from '@src/types'
 
 interface props {
   title: typeof CSectionsName[keyof typeof CSectionsName]
 }
 
-const CInputs: IInput[] = [
-  {
+const CInputs: IInputs = {
+  name: {
     name: 'Name',
     type: 'text'
   },
-  {
+  description: {
     name: 'Description',
     type: 'text'
   },
-  {
+  url: {
     name: 'Url',
     type: 'url'
   }
-]
+}
 
 const SectionForm = ({ title }: props) => {
-  const handleOnSumbit = (formData: FormData) => {
-    let dataToSend = {}
-    formData.forEach((element) => {
-      dataToSend = {
-        ...dataToSend, element
-      }
-    })
+  const handleOnSumbit = (formData: FormDataAdapted) => {
+    console.log(formData[CInputs.name.name])
   }
   return (
-        <Form onSumbit={handleOnSumbit} formTitle={`Add new item to ${title}`} buttonName='Add item' inputsData={CInputs} />
+        <CardLayout>
+          <Form onSumbit={handleOnSumbit} formTitle={`Add new item to ${title}`} buttonName='Add item' inputsData={CInputs} />
+        </CardLayout>
   )
 }
 
