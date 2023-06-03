@@ -1,17 +1,12 @@
-// React
+import { CRoutes } from '@src/constants'
 import { Suspense, lazy } from 'react'
-
-// Routing
 import { BrowserRouter, Route, Routes } from 'react-router-dom'
 
-// Constants
-import { CRoutes } from '@src/constants'
-
-// Custom components
 const Index = lazy(() => import('@src/pages/Index/Index'))
 const Login = lazy(() => import('@src/pages/Login/Login'))
 const Register = lazy(() => import('@src/pages/Register/Register'))
 const Dashboard = lazy(() => import('@src/pages/Dashboard/Dashboard'))
+const NotFound = lazy(() => import('@src/pages/NotFound/NotFound'))
 const PrivateRoutes = lazy(() => import('@src/routing/PrivateRoutes'))
 const PublicRoutes = lazy(() => import('@src/routing/PublicRoutes'))
 
@@ -28,7 +23,7 @@ export const Routing = () => {
           <Route element={<PrivateRoutes />}>
             <Route path={CRoutes.dashboard} element={<Dashboard />} />
           </Route>
-          <Route path='*' element={<h1>Not found</h1>} />
+          <Route path='*' element={<NotFound />} />
         </Routes>
       </Suspense>
     </BrowserRouter>
