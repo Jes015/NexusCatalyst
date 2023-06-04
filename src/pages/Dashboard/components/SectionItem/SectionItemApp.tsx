@@ -1,4 +1,5 @@
 import { RemoveIcon } from '@src/components/Icons'
+import { toast } from 'sonner'
 import styles from './sectionItemApp.module.css'
 
 interface ISectionItemAppProps {
@@ -8,6 +9,9 @@ interface ISectionItemAppProps {
 }
 
 export const SectionItemApp = ({ title, url, logo = false }: ISectionItemAppProps) => {
+  const handleOnClickToDelete = () => {
+    toast.success(`${title} deleted`)
+  }
   return (
     <div className={styles.sectionItem}>
       <a href={url} target='_blank' rel='noreferrer'>
@@ -25,7 +29,7 @@ export const SectionItemApp = ({ title, url, logo = false }: ISectionItemAppProp
           }
         </footer>
       </a>
-      <button className={styles.sectionItem__closeButton}>
+      <button onClick={handleOnClickToDelete} className={styles.sectionItem__closeButton}>
         <RemoveIcon height='1.4em' width='1.4em' />
       </button>
     </div >

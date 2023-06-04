@@ -1,5 +1,5 @@
 import { authContext } from '@src/contexts'
-import { auth } from '@src/firebase.config'
+import { auth } from '@src/firebase/firebase.config'
 import { useUserAuth } from '@src/hooks/'
 
 export const AuthContextProvider = ({ children }: { children?: JSX.Element }) => {

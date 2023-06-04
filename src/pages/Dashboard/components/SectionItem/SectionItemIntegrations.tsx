@@ -1,5 +1,6 @@
 import { RemoveIcon } from '@src/components/Icons'
 import { Suspense, lazy, useState } from 'react'
+import { toast } from 'sonner'
 import styles from './sectionItemIntegrations.module.css'
 
 const Window = lazy(async () => await import('@src/components/Window/Window'))
@@ -13,13 +14,17 @@ interface ISectionItemProps {
 export const SectionItemIntegrations = ({ title, url, description }: ISectionItemProps) => {
   const [isWindowVisible, setWindowVisible] = useState(false)
 
-  const handleOnClick = () => {
+  const handleOnClickToOpenIntegration = () => {
     setWindowVisible(true)
+  }
+
+  const handleOnClickToDelete = () => {
+    toast.success(`${title} deleted`)
   }
 
   return (
     <div className={styles.sectionItem}>
-      <div onClick={handleOnClick}>
+      <div onClick={handleOnClickToOpenIntegration}>
         <main className={styles.sectionItem__Main}>
           <img className={styles.sectionItem__Image} src={`https://logo.clearbit.com/${url}?size=400`} />
           <div>
@@ -33,7 +38,7 @@ export const SectionItemIntegrations = ({ title, url, description }: ISectionIte
           }
         </main>
       </div>
-      <button className={styles.sectionItem__closeButton}>
+      <button onClick={handleOnClickToDelete} className={styles.sectionItem__closeButton}>
         <RemoveIcon height='1.4em' width='1.4em' />
       </button>
     </div>

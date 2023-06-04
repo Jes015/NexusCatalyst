@@ -10,7 +10,6 @@ interface props {
   className: string
   direction: typeof CSectionDirection[keyof typeof CSectionDirection]
   children: React.ReactNode
-  form: JSX.Element
 }
 
 export const Section = ({ name, className, direction, children }: props) => {

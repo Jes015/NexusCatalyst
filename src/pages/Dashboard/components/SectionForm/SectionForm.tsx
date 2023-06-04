@@ -1,10 +1,9 @@
 import { Form } from '@src/components'
 import { CardLayout } from '@src/layouts'
-import { type CSectionsName } from '@src/pages/Dashboard/constants/'
 import { type FormDataAdapted, type IInputs } from '@src/types'
 
 interface props {
-  title: typeof CSectionsName[keyof typeof CSectionsName]
+  title: string
 }
 
 const CInputs: IInputs = {

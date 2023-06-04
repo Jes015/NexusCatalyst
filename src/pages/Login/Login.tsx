@@ -32,7 +32,7 @@ const Login = () => {
         navigate(CRoutes.dashboard)
       })
       .catch(err => {
-        toast.error(err.code, { style: { background: '#f05a5a' } })
+        toast.error(err.code, { style: { background: '#f05a5a', border: 'none' } })
       })
   }
 
