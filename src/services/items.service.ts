@@ -1,16 +1,44 @@
-import { db } from '@src/firebase/firebase.config'
-import { doc, getDoc } from 'firebase/firestore'
+import { auth, db } from '@src/firebase/firebase.config'
+import { type TSections } from '@src/pages/Dashboard/types/Section.types'
+import { type IItem } from '@src/types'
+import { arrayRemove, arrayUnion, doc, updateDoc } from 'firebase/firestore'
 
-const getUserItems = async (collectionName: string, uid: string) => {
-  const documentReference = doc(db, collectionName, uid)
-  const documentSnapshot = await getDoc(documentReference)
-  let documentData = null
-  if (documentSnapshot.exists()) {
-    documentData = documentSnapshot.data()
+const firestorePath = '/Items/'
+
+const addItem = async (item: IItem, sectionName: TSections) => {
+  if (auth.currentUser?.uid == null) return
+
+  const userId = auth.currentUser.uid as string
+  const documentReference = doc(db, `${firestorePath}${userId}`)
+
+  try {
+    await updateDoc(documentReference, {
+      [sectionName]: arrayUnion(item)
+    })
+
+    return true
+  } catch (err) {
+    console.error(err)
+    return err
   }
-
-  return documentData
-  // const adaptedItems = adaptItem(documentSnapshot)
 }
 
-export { getUserItems }
+const removeItem = async (item: IItem, sectionName: TSections) => {
+  if (auth.currentUser?.uid == null) return
+
+  const userId = auth.currentUser.uid as string
+  const documentReference = doc(db, `${firestorePath}${userId}`)
+
+  try {
+    await updateDoc(documentReference, {
+      [sectionName]: arrayRemove(item)
+    })
+
+    return true
+  } catch (err) {
+    console.error(err)
+    return err
+  }
+}
+
+export { addItem, removeItem }

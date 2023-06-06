@@ -1,7 +1,7 @@
 const CSectionsName = {
   Home: 'Home',
   RecommendedApps: 'RecommendedApps',
-  ToDo: 'To Do',
+  ToDo: 'ToDo',
   Integrations: 'Integrations'
 } as const
 

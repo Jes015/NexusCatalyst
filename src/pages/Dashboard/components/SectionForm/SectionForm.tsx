@@ -1,9 +1,12 @@
 import { Form } from '@src/components'
 import { CardLayout } from '@src/layouts'
-import { type FormDataAdapted, type IInputs } from '@src/types'
+import { type TSections } from '@src/pages/Dashboard/types/Section.types'
+import { addItem } from '@src/services'
+import { type FormDataAdapted, type IInputs, type IItem } from '@src/types'
+import { toast } from 'sonner'
 
 interface props {
-  title: string
+  sectionName: TSections
 }
 
 const CInputs: IInputs = {
@@ -21,13 +24,25 @@ const CInputs: IInputs = {
   }
 }
 
-const SectionForm = ({ title }: props) => {
+const SectionForm = ({ sectionName }: props) => {
   const handleOnSumbit = (formData: FormDataAdapted) => {
-    console.log(formData[CInputs.name.name])
+    const item: IItem = {
+      name: formData[CInputs.name.name],
+      url: formData[CInputs.url.name],
+      description: formData[CInputs.description.name]
+    }
+
+    addItem(item, sectionName)
+      .then(() => {
+        toast.success('Data added')
+      })
+      .catch((err) => {
+        toast.error(err, { style: { background: '#f05a5a', border: 'none' } })
+      })
   }
   return (
         <CardLayout>
-          <Form onSumbit={handleOnSumbit} formTitle={`Add new item to ${title}`} buttonName='Add item' inputsData={CInputs} />
+          <Form onSumbit={handleOnSumbit} formTitle={sectionName} buttonName='Add item' inputsData={CInputs} />
         </CardLayout>
   )
 }

@@ -5,7 +5,7 @@ import { Navigate, Outlet } from 'react-router-dom'
 const PublicRoutes = () => {
   const { user, sessionLoading } = useAuthContext()
 
-  if (sessionLoading) return <h1>Loading</h1>
+  if (sessionLoading === true) return <h1>Loading</h1>
 
   return ((user != null) ? <Navigate to={CRoutes.dashboard} /> : <Outlet />)
 }

@@ -29,3 +29,9 @@
     align-items: start;
     flex-wrap: wrap;
 }
+
+.section__not-found-message {
+    color: var(--ancord-primary-color);
+    font-weight: 700;
+    font-size: 0.75em;
+}

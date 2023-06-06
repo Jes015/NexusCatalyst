@@ -1,35 +1,28 @@
 import { AddIcon } from '@src/components/Icons'
 import { SectionItemApp, SectionItemIntegrations } from '@src/pages/Dashboard/components'
-import { CSectionDirection, CSectionType, type CSectionsName } from '@src/pages/Dashboard/constants/'
-import { getItems } from '@src/services'
-import { type TItems } from '@src/types'
+import { CSectionDirection, CSectionType } from '@src/pages/Dashboard/constants/'
+import { type TSections } from '@src/pages/Dashboard/types/Section.types'
+import { type IItem } from '@src/types'
 import { Suspense, lazy, useState } from 'react'
 import styles from './section.module.css'
 const Window = lazy(() => import('@src/components/Window/Window'))
 const SectionForm = lazy(() => import('@src/pages/Dashboard/components/SectionForm/SectionForm'))
 
 interface props {
-  name: typeof CSectionsName[keyof typeof CSectionsName]
+  itemsData: IItem[]
+  name: TSections
   className: string
   direction: typeof CSectionDirection[keyof typeof CSectionDirection]
   type: typeof CSectionType[keyof typeof CSectionType]
   showItemLogo: boolean
 }
 
-export const Section = ({ name, className, direction, type, showItemLogo }: props) => {
-  const [itemsData, setItemsData] = useState<TItems>()
+export const Section = ({ itemsData, name, className, direction, type, showItemLogo }: props) => {
+  console.log()
   const [isWindowVisible, setWindowVisible] = useState(false)
 
   const handleOnClick = () => {
     setWindowVisible(true)
-    getItems('Home')
-      .then(res => {
-        setItemsData(res as TItems)
-        console.log(typeof res)
-      })
-      .catch(err => {
-        console.log(err)
-      })
   }
 
   return (
@@ -51,17 +44,18 @@ export const Section = ({ name, className, direction, type, showItemLogo }: prop
         <Suspense>
           {
             isWindowVisible &&
-            <Window setWindowVisible={setWindowVisible} title='Holaaaaa'>
-              {<SectionForm title={name} />}
+            <Window setWindowVisible={setWindowVisible} title={name}>
+              {<SectionForm sectionName={name} />}
             </Window>
           }
         </Suspense>
-        {itemsData != null
-          ? Object.entries(itemsData).map(([key, item]) => {
-            return type === CSectionType.App ? <SectionItemApp key={key} item={item} showLogo={showItemLogo} /> : <SectionItemIntegrations key={key} item={item} showLogo={showItemLogo} />
+        {itemsData != null && itemsData.length !== 0 &&
+          Object.entries(itemsData).map(([key, item]) => {
+            return type === CSectionType.App ? <SectionItemApp sectionName={name} key={key} item={item} showLogo={showItemLogo} /> : <SectionItemIntegrations sectionName={name} key={key} item={item} showLogo={showItemLogo} />
           })
-          : <h3>Items not found</h3>
         }
+        {itemsData == null && <span className={styles['section__not-found-message']}>Items not found</span>}
+        {itemsData != null && itemsData.length === 0 && <span className={styles['section__not-found-message']}>No items added</span>}
       </main>
     </section>
   )

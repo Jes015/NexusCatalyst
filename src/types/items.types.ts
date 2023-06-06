@@ -8,6 +8,6 @@ interface IItem {
   description: string
 }
 
-type TItems = Record<string, IItem>
+type TItems = Record<string, IItem[]>
 
 export type { IItem, ISection, TItems }
