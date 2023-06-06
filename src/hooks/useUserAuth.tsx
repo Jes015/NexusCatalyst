@@ -1,7 +1,7 @@
 // React
 import { useEffect, useState } from 'react'
 
-import { logIn, logOut, register } from '@src/services/user.service'
+import { logIn, logOut, register } from '@src/services/'
 import type { IUser } from '@src/types'
 import { browserLocalPersistence, onAuthStateChanged, setPersistence, type Auth } from 'firebase/auth'
 

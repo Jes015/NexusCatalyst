@@ -1,5 +1,8 @@
 import { AddIcon } from '@src/components/Icons'
-import { CSectionDirection, type CSectionsName } from '@src/pages/Dashboard/constants/'
+import { SectionItemApp, SectionItemIntegrations } from '@src/pages/Dashboard/components'
+import { CSectionDirection, CSectionType, type CSectionsName } from '@src/pages/Dashboard/constants/'
+import { getItems } from '@src/services'
+import { type TItems } from '@src/types'
 import { Suspense, lazy, useState } from 'react'
 import styles from './section.module.css'
 const Window = lazy(() => import('@src/components/Window/Window'))
@@ -9,14 +12,24 @@ interface props {
   name: typeof CSectionsName[keyof typeof CSectionsName]
   className: string
   direction: typeof CSectionDirection[keyof typeof CSectionDirection]
-  children: React.ReactNode
+  type: typeof CSectionType[keyof typeof CSectionType]
+  showItemLogo: boolean
 }
 
-export const Section = ({ name, className, direction, children }: props) => {
+export const Section = ({ name, className, direction, type, showItemLogo }: props) => {
+  const [itemsData, setItemsData] = useState<TItems>()
   const [isWindowVisible, setWindowVisible] = useState(false)
 
   const handleOnClick = () => {
     setWindowVisible(true)
+    getItems('Home')
+      .then(res => {
+        setItemsData(res as TItems)
+        console.log(typeof res)
+      })
+      .catch(err => {
+        console.log(err)
+      })
   }
 
   return (
@@ -43,7 +56,12 @@ export const Section = ({ name, className, direction, children }: props) => {
             </Window>
           }
         </Suspense>
-        {children}
+        {itemsData != null
+          ? Object.entries(itemsData).map(([key, item]) => {
+            return type === CSectionType.App ? <SectionItemApp key={key} item={item} showLogo={showItemLogo} /> : <SectionItemIntegrations key={key} item={item} showLogo={showItemLogo} />
+          })
+          : <h3>Items not found</h3>
+        }
       </main>
     </section>
   )

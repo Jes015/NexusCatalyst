@@ -1,4 +1,5 @@
 import { RemoveIcon } from '@src/components/Icons'
+import { type IItem } from '@src/types'
 import { Suspense, lazy, useState } from 'react'
 import { toast } from 'sonner'
 import styles from './sectionItemIntegrations.module.css'
@@ -6,12 +7,11 @@ import styles from './sectionItemIntegrations.module.css'
 const Window = lazy(async () => await import('@src/components/Window/Window'))
 
 interface ISectionItemProps {
-  title: string
-  url: string
-  description: string
+  item: IItem
+  showLogo: boolean
 }
 
-export const SectionItemIntegrations = ({ title, url, description }: ISectionItemProps) => {
+export const SectionItemIntegrations = ({ item, showLogo }: ISectionItemProps) => {
   const [isWindowVisible, setWindowVisible] = useState(false)
 
   const handleOnClickToOpenIntegration = () => {
@@ -19,21 +19,21 @@ export const SectionItemIntegrations = ({ title, url, description }: ISectionIte
   }
 
   const handleOnClickToDelete = () => {
-    toast.success(`${title} deleted`)
+    toast.success(`${item.name} deleted`)
   }
 
   return (
     <div className={styles.sectionItem}>
       <div onClick={handleOnClickToOpenIntegration}>
         <main className={styles.sectionItem__Main}>
-          <img className={styles.sectionItem__Image} src={`https://logo.clearbit.com/${url}?size=400`} />
+          { showLogo && <img className={styles.sectionItem__Image} src={`https://logo.clearbit.com/${item.url}?size=400`} />}
           <div>
-            <span className={styles.sectionItem__Title}>{title}</span>
-            <p className={styles.sectionItem__Description}>{description}</p>
+            <span className={styles.sectionItem__Title}>{item.name}</span>
+            <p className={styles.sectionItem__Description}>{item.description}</p>
           </div>
           {isWindowVisible &&
             <Suspense fallback={<h1>Loading integration</h1>}>
-              <Window setWindowVisible={setWindowVisible} title={title} url={url} />
+              <Window setWindowVisible={setWindowVisible} title={item.name} url={item.url} />
             </Suspense>
           }
         </main>
