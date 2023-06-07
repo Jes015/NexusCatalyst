@@ -8,8 +8,8 @@ const firestorePath = '/Items/'
 const addItem = async (item: IItem, sectionName: TSections) => {
   if (auth.currentUser?.uid == null) return
 
-  const userId = auth.currentUser.uid as string
-  const documentReference = doc(db, `${firestorePath}${userId}`)
+  const userId = auth.currentUser.uid
+  const documentReference = doc(db, firestorePath + userId)
 
   try {
     await updateDoc(documentReference, {
@@ -26,8 +26,8 @@ const addItem = async (item: IItem, sectionName: TSections) => {
 const removeItem = async (item: IItem, sectionName: TSections) => {
   if (auth.currentUser?.uid == null) return
 
-  const userId = auth.currentUser.uid as string
-  const documentReference = doc(db, `${firestorePath}${userId}`)
+  const userId = auth.currentUser.uid
+  const documentReference = doc(db, firestorePath + userId)
 
   try {
     await updateDoc(documentReference, {

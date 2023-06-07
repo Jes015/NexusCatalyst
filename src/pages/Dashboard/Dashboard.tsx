@@ -1,3 +1,4 @@
+import { useAuthContext } from '@src/contexts'
 import { Section } from '@src/pages/Dashboard/components'
 import { CSectionDirection, CSectionType, CSectionsName } from '@src/pages/Dashboard/constants/'
 import { useItemsData } from '@src/pages/Dashboard/hooks'
@@ -35,17 +36,23 @@ const Sections = {
 } as const
 
 const Dashboard = () => {
+  const { logOutUser } = useAuthContext()
   const { itemsData } = useItemsData()
 
   return (
-    <div className={styles.dashboard}>
-      {itemsData != null
-        ? Object.entries(Sections).map(([key, value]) => {
-          return <Section itemsData={itemsData[value.name]} key={key} name={value.name} className={value.className} direction={value.direction} type={value.type} showItemLogo={value.showIcons} />
-        })
-        : <h1>Loading sections</h1>
-      }
-    </div>
+    <>
+      <div className={styles.dashboard}>
+        {itemsData != null
+          ? Object.entries(Sections).map(([key, value]) => {
+            return <Section itemsData={itemsData[value.name]} key={key} name={value.name} className={value.className} direction={value.direction} type={value.type} showItemLogo={value.showIcons} />
+          })
+          : <h1>Loading sections</h1>
+        }
+      </div>
+      <div>
+        <button onClick={() => { logOutUser() }}>Logout</button>
+      </div>
+    </>
   )
 }
 

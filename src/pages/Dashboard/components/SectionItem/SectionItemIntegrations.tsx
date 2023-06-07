@@ -35,7 +35,7 @@ export const SectionItemIntegrations = ({ sectionName, item, showLogo }: ISectio
     <div className={styles.sectionItem}>
       <div onClick={handleOnClickToOpenIntegration}>
         <main className={styles.sectionItem__Main}>
-          {showLogo && <img className={styles.sectionItem__Image} src={`https://logo.clearbit.com/${item.url as string}?size=400`} />}
+          {showLogo && <img className={styles.sectionItem__Image} src={`https://logo.clearbit.com/${item.url}?size=400`} />}
           <div>
             <span className={styles.sectionItem__Title}>{item.name}</span>
             <p className={styles.sectionItem__Description}>{item.description}</p>

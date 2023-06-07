@@ -28,7 +28,7 @@ export const SectionItemApp = ({ sectionName, item, showLogo }: ISectionItemAppP
         <header className={styles.sectionItem__Header}>
           {
             showLogo
-              ? <img className={styles.sectionItem__Image} src={`https://logo.clearbit.com/${item.url as string}?size=400`} />
+              ? <img className={styles.sectionItem__Image} src={`https://logo.clearbit.com/${item.url}?size=400`} />
               : <span className={styles.sectionItem__Title}>{item.name}</span>
           }
         </header>

@@ -1,9 +1,9 @@
 // React
 import { useEffect, useState } from 'react'
 
-import { logIn, logOut, register } from '@src/services/'
+import { logIn, logOut } from '@src/services/'
 import type { IUser } from '@src/types'
-import { browserLocalPersistence, onAuthStateChanged, setPersistence, type Auth } from 'firebase/auth'
+import { browserLocalPersistence, onAuthStateChanged, setPersistence, type Auth, type AuthProvider } from 'firebase/auth'
 
 interface IParams {
   auth: Auth
@@ -28,23 +28,11 @@ export const useUserAuth = ({ auth }: IParams) => {
           setSessionLoading(false)
         })
     })
-  }, [])
+  }, [auth])
 
-  const registerUser = async (email: string, password: string) => {
+  const logInUser = async (provider: AuthProvider) => {
     return await new Promise((resolve, reject) => {
-      register(auth, email, password)
-        .then(() => {
-          resolve('User registered')
-        })
-        .catch(err => {
-          reject(err)
-        })
-    })
-  }
-
-  const logInUser = async (email: string, password: string) => {
-    return await new Promise((resolve, reject) => {
-      logIn(auth, email, password)
+      logIn(auth, provider)
         .then(() => {
           resolve('User logged')
         })
@@ -61,5 +49,5 @@ export const useUserAuth = ({ auth }: IParams) => {
       })
   }
 
-  return { user, registerUser, logInUser, logOutUser, sessionLoading }
+  return { user, logInUser, logOutUser, sessionLoading }
 }

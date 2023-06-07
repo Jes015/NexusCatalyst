@@ -1,10 +1,10 @@
 import { type IUser } from '@src/types'
+import { type AuthProvider } from 'firebase/auth'
 import { createContext, useContext } from 'react'
 
 interface IContext {
   user: IUser | null
-  logInUser: (username: string, password: string) => Promise<unknown>
-  registerUser: (username: string, password: string) => Promise<unknown>
+  logInUser: (provider: AuthProvider) => Promise<unknown>
   logOutUser: () => void
   sessionLoading: boolean
 }
