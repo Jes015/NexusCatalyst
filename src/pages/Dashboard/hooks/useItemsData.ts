@@ -19,7 +19,7 @@ export const useItemsData = () => {
         if (snapshot.exists()) {
           setItemsData(snapshot.data())
         } else {
-          setDoc(docReference, { [CSectionsName.Home]: [], [CSectionsName.Integrations]: [], [CSectionsName.RecommendedApps]: [], [CSectionsName.ToDo]: [] })
+          setDoc(docReference, { [CSectionsName.Home]: [], [CSectionsName.Integrations]: [{ name: 'Dev Vault', description: 'Tools for web developers', url: 'https://dev-vault-ochre.vercel.app/' }], [CSectionsName.RecommendedApps]: [], [CSectionsName.ToDo]: [] })
             .then(res => {
               console.log(res)
             })

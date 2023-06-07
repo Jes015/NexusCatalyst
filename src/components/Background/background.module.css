@@ -10,7 +10,7 @@
     height: 100vh;
     top: 0;
     left: 0;
-    background: #16161a;
+    background-color: #16161a;
     overflow: hidden;
     z-index: -20;
 }

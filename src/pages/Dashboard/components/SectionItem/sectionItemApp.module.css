@@ -1,16 +1,16 @@
 .sectionItem {
     position: relative;
     cursor: pointer;
+    overflow: hidden;
 }
 
-.sectionItem:hover .sectionItem__Header {
-    background-color: var(--body-terceary-background);
-}
 
 .sectionItem__Header {
     display: flex;
     align-items: center;
+    transition: border .2s ease-in,all .4s ease-in;
     background-color: var(--body-secondary-background);
+    background-image: var(--background-primary-image);
     border-radius: 0.3em;
     padding: 1em;
 }
@@ -38,4 +38,9 @@
 
 .sectionItem__closeButton:hover {
     cursor: not-allowed;
+}
+
+.sectionItem:hover .sectionItem__Header {
+    background-color: var(--body-terceary-background);
+    filter: sepia(1) hue-rotate(220deg) contrast(1.4) saturate(4);
 }
