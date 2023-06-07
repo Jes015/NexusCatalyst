@@ -1,5 +1,4 @@
 import { Form } from '@src/components'
-import { CardLayout } from '@src/layouts'
 import { type TSections } from '@src/pages/Dashboard/types/Section.types'
 import { addItem } from '@src/services'
 import { type FormDataAdapted, type IInputs, type IItem } from '@src/types'
@@ -41,9 +40,7 @@ const SectionForm = ({ sectionName }: props) => {
       })
   }
   return (
-        <CardLayout>
           <Form onSumbit={handleOnSumbit} formTitle={sectionName} buttonName='Add item' inputsData={CInputs} />
-        </CardLayout>
   )
 }
 

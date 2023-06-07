@@ -44,7 +44,7 @@ export const Section = ({ itemsData, name, className, direction, type, showItemL
         <Suspense>
           {
             isWindowVisible &&
-            <Window setWindowVisible={setWindowVisible} title={name}>
+            <Window setWindowVisible={setWindowVisible} title={name} width='320px' height='450px'>
               {<SectionForm sectionName={name} />}
             </Window>
           }

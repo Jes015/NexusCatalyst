@@ -42,7 +42,7 @@ export const SectionItemIntegrations = ({ sectionName, item, showLogo }: ISectio
           </div>
           {isWindowVisible &&
             <Suspense fallback={<h1>Loading integration</h1>}>
-              <Window setWindowVisible={setWindowVisible} title={item.name} url={item.url} />
+              <Window setWindowVisible={setWindowVisible} title={item.name} url={item.url} max={true} />
             </Suspense>
           }
         </main>
